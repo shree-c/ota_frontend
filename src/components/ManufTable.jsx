@@ -8,9 +8,8 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { manufacturer } from '../data.json'
 import { Button } from '@mui/material'
-import { Link } from '@mui/material'
-
-export default function BasicTable() {
+import { Link as Rlink } from 'react-router-dom'
+export default function ManufTable() {
   return (
     <TableContainer sx={{ maxWidth: '650px' }}
       component={Paper}>
@@ -29,7 +28,7 @@ export default function BasicTable() {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                <Link underline='always'>{row._id}</Link>
+                <Rlink to={`/manufacturer/${row._id}`}>{row._id}</Rlink>
               </TableCell>
               <TableCell align="right">{row.name}</TableCell>
               <TableCell align="right"><Button>Delete</Button></TableCell>
