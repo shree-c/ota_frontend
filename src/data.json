@@ -1,16 +1,118 @@
 {
-  "manuacturer": [
+  "manufacturer": [
     {
-      "name": "Man 1",
-      "_id": "id"
+      "name": "Man 0",
+      "_id": "idasdf"
     },
     {
       "name": "Man 1",
-      "_id": "id"
+      "_id": "idasdf"
     },
     {
-      "name": "Man 1",
-      "_id": "id"
+      "name": "Man 2",
+      "_id": "idasdf"
+    }
+  ],
+  "batch": [
+    {
+      "name": "batch sd1",
+      "date": "22-01-2022",
+      "binFile": "bin-1 1.2.1",
+      "no_of_pics": 200
+    },
+    {
+      "name": "batch sd1",
+      "date": "22-01-2022",
+      "binFile": "bin-yy9 1.2.1",
+      "no_of_pics": 606
+    },
+    {
+      "name": "batch ax2",
+      "date": "22-05-2022",
+      "binFile": "bin-mp2 1.2.1",
+      "no_of_pics": 920
+    },
+    {
+      "name": "batch bd3",
+      "date": "22-01-2022",
+      "binFile": "bin-bu1 1.2.1",
+      "no_of_pics": 105
+    },
+    {
+      "name": "batch mr3",
+      "date": "28-01-2012",
+      "binFile": "bin-8x1 1.2.1",
+      "no_of_pics": 106
+    },
+    {
+      "name": "batch sd2",
+      "date": "28-01-2021",
+      "binFile": "bin-pb7 1.2.1",
+      "no_of_pics": 260
+    }
+  ],
+  "esp": [
+    {
+      "name": "exciting xx21",
+      "date": "10/16/2057",
+      "mac": "alongasdf"
+    },
+    {
+      "name": "chapter sd1",
+      "date": "5/21/2067",
+      "mac": "riversa df"
+    },
+    {
+      "name": "cold ax2",
+      "date": "8/10/2118",
+      "mac": "hotlsadf "
+    },
+    {
+      "name": "wrong bd3",
+      "date": "3/27/2095",
+      "mac": "coatasdf"
+    },
+    {
+      "name": "batch mr3",
+      "date": "7/10/2073",
+      "mac": "asdfaspasdf"
+    },
+    {
+      "name": "case sd2",
+      "date": "28-01-2021",
+      "mac": "bin-pb7 1.2.1"
+    }
+  ],
+  "pics": [
+    {
+      "id": "characteristicasd",
+      "last_update": "11/8/2083",
+      "bin_file": "bidradio12",
+      "mac": "studiedasd"
+    },
+    {
+      "id": "statementasdf",
+      "last_update": "2/17/2119",
+      "bin_file": "wagon",
+      "mac": "asdfasdfsad"
+    },
+    {
+      "id": "listen",
+      "last_update": "10/11/2102",
+      "bin_file": "bidradio12",
+      "mac": "preparel"
+    },
+    {
+      "id": "flame",
+      "last_update": "12/8/2041",
+      "bin_file": "bidradio12",
+      "mac": "studiedasd"
+    },
+    {
+      "id": "characteristicasd",
+      "last_update": "5/2/2113",
+      "bin_file": "cake",
+      "mac": "stusadfd"
     }
   ]
 }
