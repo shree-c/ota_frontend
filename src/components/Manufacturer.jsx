@@ -1,24 +1,52 @@
 import { Typography } from '@mui/material'
-import { TextField, Button, Box } from '@mui/material'
+import { Button, Box } from '@mui/material'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import ManufTable from './ManufTable'
+import axios from 'axios'
+import AddManuf from './AddManuf'
+
 function Manufacturer() {
   const [addManuf, setaddManuf] = useState(false)
-  const [addDisabled, setAddDisabled] = useState(true)
-  const [name, setName] = useState('')
-  const [note, setNote] = useState('')
-  useEffect(() => {
-    if (name.trim().length < 3 || note.trim().length < 3) {
-      setAddDisabled(true)
-    } else {
-      setAddDisabled(false)
+  const [manufs, setManufs] = useState([])
+
+  const createNewManuf = (name, notes) => {
+    const addNewManuf = async () => {
+      try {
+        const res = await axios.post(`http://localhost:5000/api/v1/manufacturer`, {
+          name,
+          notes
+        })
+        setManufs((m) => [...m, res.data.body])
+      } catch (error) {
+        console.log(error.message)
+      }
     }
-  }, [name, note, addManuf])
-  const createNewManuf = () => {
-    console.log({ name, note })
-      
+    addNewManuf()
   }
+
+  const deleteManuf = (id) => {
+    (async function () {
+      try {
+        await axios.delete(`http://localhost:5000/api/v1/manufacturer/${id}`)
+        setManufs((m) => m.filter((v) => v._id !== id))
+      } catch (error) {
+        console.log(error.message)
+      }
+    })()
+  }
+
+  useEffect(() => {
+    const fetchManufs = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/v1/manufacturers`)
+        setManufs(res.data.body)
+      } catch (error) {
+        console.log(error.response, error.request)
+      }
+    }
+    fetchManufs()
+  }, [])
 
   return (
     <>
@@ -26,21 +54,11 @@ function Manufacturer() {
       <Box justifyContent={'center'} maxWidth={650} marginX='auto' marginY={10}>
         <Box marginY={5}>
           {
-            (addManuf ? (
-              <>
-                <TextField sx={{
-                  display: 'block',
-                  marginBottom: 2
-                }} error={false} type="text" name="manufName" id="" placeholder='name' variant='outlined' value={name} onChange={(e) => setName(e.target.value)} />
-                <TextField type="text" multiline rows={3} name="note" id="" placeholder='notes' variant='outlined' value={note} onChange={(e) => setNote(e.target.value)} />
-                <Button onClick={() => setaddManuf(false)}>close</Button>
-                <Button disabled={addDisabled} onClick={createNewManuf}>Add</Button>
-              </>
-            ) : <Button onClick={() => setaddManuf(true)}>Add New Manufacturer</Button>
-            )
+            (addManuf ? <AddManuf createNewManuf={createNewManuf} /> : '')
           }
+          <Button onClick={() => setaddManuf((e) => !e)}>{(addManuf) ? 'Close' : 'Add'}</Button>
         </Box>
-        <ManufTable />
+        <ManufTable manufs={manufs} deleteSingleManuf={deleteManuf} />
       </Box>
     </>
   )
